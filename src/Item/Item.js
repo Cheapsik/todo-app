@@ -1,7 +1,7 @@
 import "./Item.scss";
 import { MdDeleteForever as RemoveItem } from "react-icons/md";
 
-const Item = ({ item, handleDeleteTask, id }) => {
+const Item = ({ item, handleDeleteTask}) => {
   const handleButtonClick = () => {
     handleDeleteTask(item);
   };

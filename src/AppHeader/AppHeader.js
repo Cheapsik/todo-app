@@ -8,11 +8,15 @@ const AppHeader = ({ inputValue, inputOnChange, addTask }) => {
         <input
           className="addTask-input"
           type="text"
-          placeholder="What you want to do...?"
+          placeholder="What do you want to do...?"
           value={inputValue}
           onChange={inputOnChange}
         />
-        <button className="addTask-button-submit" type="submit" onClick={addTask}>
+        <button
+          className="addTask-button-submit"
+          type="submit"
+          onClick={addTask}
+        >
           <BsArrowRight />
         </button>
       </div>

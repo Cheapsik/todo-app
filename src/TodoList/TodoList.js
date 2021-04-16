@@ -14,8 +14,9 @@ class TodoList extends React.Component {
     });
   };
   handleAddTask = () => {
-    const taskList = [...this.state.list];
-    taskList.push(this.state.value);
+    const { value, list } = this.state;
+    const taskList = [...list];
+    taskList.push(value);
     this.setState({
       list: taskList,
       value: "",
