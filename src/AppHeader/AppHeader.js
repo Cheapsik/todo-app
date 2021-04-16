@@ -11,7 +11,7 @@ const AppHeader = ({ inputValue, inputOnChange, addTask }) => {
           placeholder="What you want to do...?"
           value={inputValue}
           onChange={inputOnChange}
-        ></input>
+        />
         <button className="addTask-button-submit" type="submit" onClick={addTask}>
           <BsArrowRight />
         </button>
