@@ -10,7 +10,7 @@ class TodoList extends React.Component {
 
   handleinputOnChange = e => {
     this.setState({
-      value: e.target.value,
+      value: e.target.value.trimLeft(),
     })
   }
   handleAddTask = () => {
@@ -20,12 +20,13 @@ class TodoList extends React.Component {
       list: taskList,
       value: ''
     })
+    console.log(taskList)
   }
 
   render() {
     return (
       <div className="todo-wrapper">
-        <AppHeader inputValue={this.state.value} inputOnChange={this.handleinputOnChange} addTask={this.handleAddTask}/>
+        <AppHeader inputValue={this.state.value} inputOnChange={this.handleinputOnChange} addTask={this.state.value ? this.handleAddTask : null}/>
         <ItemList />
       </div>
     );

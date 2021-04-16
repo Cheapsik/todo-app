@@ -3,6 +3,7 @@ import "./ItemList.scss";
 const ItemList = () => {
   return (
     <ul>
+      <Item />
     </ul>
   );
 };
