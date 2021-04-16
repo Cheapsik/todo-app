@@ -4,30 +4,44 @@ import AppHeader from "../AppHeader";
 import ItemList from "../ItemList";
 class TodoList extends React.Component {
   state = {
-    value: '',
-    list: []
+    value: "",
+    list: [],
   };
 
-  handleinputOnChange = e => {
+  handleinputOnChange = (e) => {
     this.setState({
       value: e.target.value.trimLeft(),
-    })
-  }
+    });
+  };
   handleAddTask = () => {
     const taskList = [...this.state.list];
-    taskList.push(this.state.value)
+    taskList.push(this.state.value);
     this.setState({
       list: taskList,
-      value: ''
-    })
-    console.log(taskList)
-  }
+      value: "",
+    });
+  };
+  handleDeleteTask = (itemToDelete) => {
+    const listFiltered = this.state.list.filter(
+      (listItem) => listItem !== itemToDelete,
+    );
+    this.setState({
+      list: listFiltered,
+    });
+  };
 
   render() {
     return (
       <div className="todo-wrapper">
-        <AppHeader inputValue={this.state.value} inputOnChange={this.handleinputOnChange} addTask={this.state.value ? this.handleAddTask : null}/>
-        <ItemList />
+        <AppHeader
+          inputValue={this.state.value}
+          inputOnChange={this.handleinputOnChange}
+          addTask={this.state.value ? this.handleAddTask : null}
+        />
+        <ItemList
+          taskList={this.state.list}
+          handleDeleteTask={this.handleDeleteTask}
+        />
       </div>
     );
   }

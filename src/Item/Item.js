@@ -1,12 +1,16 @@
 import "./Item.scss";
 import { MdDeleteForever } from "react-icons/md";
 
-const Item = () => {
+const Item = ({ item, handleDeleteTask }) => {
+  const handleButtonClick = () => {
+    handleDeleteTask(item);
+  };
+
   return (
     <>
       <li>
-        Make sandwich!
-        <button>
+        {item}
+        <button onClick={handleButtonClick}>
           <MdDeleteForever />
         </button>
       </li>
