@@ -1,0 +1,36 @@
+li{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 20px;
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    button{
+        background-color: transparent;
+        color: darkred;
+        font-size: 26px;
+        padding: 5px;
+        border: 0;
+        display: flex;
+        cursor: pointer;
+        transition: .2s ease-in-out;
+        &:hover{
+            color: red;
+        }
+  
+    }
+  
+    &:after {
+      content: "";
+      position: absolute;
+      left: 20px;
+      right: 30px;
+      bottom: 0px;
+      z-index: 999;
+      height: 1px;
+      background-color: darkorchid;
+  }
+  }
