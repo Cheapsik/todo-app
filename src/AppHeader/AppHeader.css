@@ -1,1 +1,95 @@
-/* No CSS *//*# sourceMappingURL=AppHeader.css.map */
+.header {
+  width: 100%;
+  height: 10vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-bottom: 1px solid darkorchid;
+}
+
+.header .addTask-wrapper {
+  width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  position: relative;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-radius: 6px;
+}
+
+.header .addTask-wrapper .addTask-input {
+  padding: 15px;
+  background: transparent;
+  color: white;
+  outline: none;
+  border: 0;
+}
+
+.header .addTask-wrapper .addTask-button-submit {
+  padding: 15px;
+  background: transparent;
+  outline: none;
+  color: white;
+  border: 0;
+  cursor: pointer;
+  font-size: 25px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.header .addTask-wrapper:after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 999;
+  height: 2px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-position: 0% 0%;
+  background: -webkit-gradient(linear, left top, right top, from(darkorchid), color-stop(50%, cyan), to(darkorchid));
+  background: linear-gradient(to right, darkorchid 0%, cyan 50%, darkorchid 100%);
+  background-size: 500% auto;
+  -webkit-animation: gradient 2s linear infinite;
+          animation: gradient 2s linear infinite;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+/*# sourceMappingURL=AppHeader.css.map */
