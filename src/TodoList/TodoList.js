@@ -16,7 +16,8 @@ class TodoList extends React.Component {
   handleAddTask = () => {
     const { value, list } = this.state;
     const taskList = [...list];
-    taskList.push(value);
+    const upperCased = value.charAt(0).toUpperCase() + value.slice(1);
+    taskList.push(upperCased);
     this.setState({
       list: taskList,
       value: "",
@@ -24,7 +25,7 @@ class TodoList extends React.Component {
   };
   handleDeleteTask = (itemToDelete, id) => {
     const listFiltered = this.state.list.filter(
-      (listItem,index) => index !== id
+      (listItem, index) => index !== id,
     );
     this.setState({
       list: listFiltered,
