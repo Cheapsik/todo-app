@@ -32,6 +32,19 @@ class TodoList extends React.Component {
     });
   };
 
+  componentDidUpdate() {
+    localStorage.setItem("dataStore", JSON.stringify(this.state.list));
+  }
+
+  componentDidMount() {
+    const dataStore = JSON.parse(localStorage.getItem("dataStore"));
+    if (dataStore !== null) {
+      this.setState({
+        list: dataStore,
+      });
+    }
+  }
+
   render() {
     return (
       <div className="todo-wrapper">
