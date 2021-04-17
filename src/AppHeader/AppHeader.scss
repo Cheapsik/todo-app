@@ -1,4 +1,6 @@
-$color-main-theme: darkorchid;
+$color-border-bottom-header: darkorchid;
+$darken: darken($color: $color-border-bottom-header, $amount: 20);
+$main-color-gradient: #0ff;
 
 
 .header {
@@ -8,7 +10,7 @@ $color-main-theme: darkorchid;
     flex-flow: column nowrap;
     align-items: center;
     justify-content: center;
-    border-bottom: 1px solid $color-main-theme;
+    border-bottom: 1px solid $color-border-bottom-header;
 }
 
 .addTask-wrapper {
@@ -17,9 +19,8 @@ $color-main-theme: darkorchid;
     justify-content: space-between;
     color: white;
     position: relative;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+    border: 1px solid black;
+    border-bottom: 0;
     border-radius: 6px;
 
     &::after {
@@ -29,13 +30,13 @@ $color-main-theme: darkorchid;
         right: 0px;
         bottom: 0px;
         z-index: 999;
-        height: 2px;
+        height: 3px;
         border-bottom-left-radius: 2px;
         border-bottom-right-radius: 2px;
         background-position: 0% 0%;
-        background: linear-gradient(to right, $color-main-theme 0%, cyan 50%, $color-main-theme 100%);
+        background: linear-gradient(to right, $color-border-bottom-header 0%, $darken 50%, $main-color-gradient 51%, $color-border-bottom-header 100%);
         background-size: 500% auto;
-        animation: gradient 5s linear infinite;
+        animation: gradient 10s linear infinite;
     }
 }
 
@@ -76,15 +77,23 @@ $color-main-theme: darkorchid;
 }
 
 
-@media (max-width: 700px) {
+@media (max-width: 800px),
+(max-height: 750px) {
     .header {
         border-bottom: 0;
         justify-content: flex-start;
+        height: 55px;
+
 
         .addTask-wrapper {
             width: 100%;
+            border: 0;
 
-            .addTask-input {
+            &::after {
+                border-radius: 0;
+            }
+
+            &-input {
                 width: 100%;
             }
         }
