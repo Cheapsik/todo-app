@@ -4,7 +4,7 @@ const ItemList = ({ taskList,handleDeleteTask }) => {
   return (
     <ul>
       {taskList.map((item, id) => (
-        <Item key={id} item={item} handleDeleteTask={handleDeleteTask}/>
+        <Item key={id} id={id} item={item} handleDeleteTask={handleDeleteTask}/>
       ))}
     </ul>
   );

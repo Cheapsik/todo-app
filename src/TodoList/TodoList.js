@@ -22,9 +22,9 @@ class TodoList extends React.Component {
       value: "",
     });
   };
-  handleDeleteTask = (itemToDelete) => {
+  handleDeleteTask = (itemToDelete, id) => {
     const listFiltered = this.state.list.filter(
-      (listItem) => listItem !== itemToDelete,
+      (listItem,index) => index !== id
     );
     this.setState({
       list: listFiltered,
