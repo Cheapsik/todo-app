@@ -3,14 +3,16 @@ import "./Item.scss";
 import { MdDeleteForever as RemoveItem, MdDone as Done } from "react-icons/md";
 
 const Item = ({ item, handleDeleteTask, id }) => {
+ 
   let [done, setDone] = useState(false);
 
   const handleDoneTask = () => {
     if (!done) setDone((done = true));
   };
-
+ 
   const handleDelTask = () => {
     handleDeleteTask(item, id);
+    setDone((done = false))
   };
 
   return (
