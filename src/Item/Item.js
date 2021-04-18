@@ -1,38 +1,31 @@
-import React, { useState } from "react";
-import "./Item.scss";
-import { MdDeleteForever as RemoveItem, MdDone as Done } from "react-icons/md";
+import './Item.scss';
+import { MdDeleteForever as RemoveItem, MdDone as Done } from 'react-icons/md';
 
-const Item = ({ item, handleDeleteTask, id }) => {
- 
-  let [done, setDone] = useState(false);
-
+const Item = ({ item, deleteTask, doneTask }) => {
   const handleDoneTask = () => {
-    if (!done) setDone((done = true));
+    doneTask(item.id);
   };
- 
-  const handleDelTask = () => {
-    handleDeleteTask(item, id);
-    setDone((done = false))
+
+  const handleDeleteTask = () => {
+    deleteTask(item.id);
   };
 
   return (
-    <>
-      <li style={{ textDecoration: done ? "line-through" : "none" }}>
-        {item}
-        <div className="icon-container">
-          <button
-            style={{ display: done ? "none" : "block" }}
-            onClick={handleDoneTask}
-          >
-            <Done />
-          </button>
-          <button onClick={handleDelTask}>
-            <RemoveItem />
-          </button>
-        </div>
-      </li>
-    </>
+    <li style={{ textDecoration: item.isDone ? 'line-through' : 'none' }}>
+      {item.value}
+      <div className='icon-container'>
+        <button
+          style={{ display: item.isDone ? 'none' : 'block' }}
+          onClick={handleDoneTask}
+        >
+          <Done />
+        </button>
+        <button onClick={handleDeleteTask}>
+          <RemoveItem />
+        </button>
+      </div>
+    </li>
   );
 };
 
-export default Item;
+export default (Item);

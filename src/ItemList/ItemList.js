@@ -1,10 +1,15 @@
 import Item from "../Item";
 import "./ItemList.scss";
-const ItemList = ({ taskList,handleDeleteTask }) => {
+const ItemList = ({ taskList, deleteTask, doneTask }) => {
   return (
     <ul>
-      {taskList.map((item, id) => (
-        <Item key={id} id={id} item={item} handleDeleteTask={handleDeleteTask}/>
+      {taskList.map((item) => (
+        <Item
+          key={item.id}
+          item={item}
+          deleteTask={deleteTask}
+          doneTask={doneTask}
+        />
       ))}
     </ul>
   );
