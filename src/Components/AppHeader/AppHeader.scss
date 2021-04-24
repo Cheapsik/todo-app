@@ -1,6 +1,5 @@
-$color-border-bottom-header: darkorchid;
-$darken: darken($color: $color-border-bottom-header, $amount: 20);
-$main-color-gradient: #0ff;
+$color-border-bottom-header: indigo;
+$main-color-gradient: #000;
 
 
 .header {
@@ -34,7 +33,7 @@ $main-color-gradient: #0ff;
         border-bottom-left-radius: 2px;
         border-bottom-right-radius: 2px;
         background-position: 0% 0%;
-        background: linear-gradient(to right, $color-border-bottom-header 0%, $darken 50%, $main-color-gradient 51%, $color-border-bottom-header 100%);
+        background: linear-gradient(to right, $color-border-bottom-header 0%, $main-color-gradient 50%, $color-border-bottom-header 100%);
         background-size: 500% auto;
         animation: gradient 10s linear infinite;
     }

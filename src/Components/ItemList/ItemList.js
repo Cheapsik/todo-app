@@ -1,4 +1,4 @@
-import Item from "../Item";
+import Item from "./Item";
 import "./ItemList.scss";
 const ItemList = ({ taskList, deleteTask, doneTask }) => {
   return (

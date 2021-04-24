@@ -3,6 +3,7 @@ import generateId from 'uniqid';
 import './TodoList.scss';
 import AppHeader from '../AppHeader';
 import ItemList from '../ItemList';
+import Footer from '../Footer'
 class TodoList extends React.Component {
   state = {
     value: '',
@@ -81,6 +82,7 @@ class TodoList extends React.Component {
           deleteTask={this.handleDeleteTask}
           doneTask={this.handleDoneTask}
         />
+        <Footer />
       </div>
     );
   }
