@@ -1,16 +1,15 @@
-import './Footer.scss'
+import "./Footer.scss";
 
-const Footer = () => {
+const Footer = ({showAll, showDone, clearTasks, numberOfTasks}) => {
   return (
-  <div className="footer">
-      <span>Tasks now:</span>
+    <footer className="footer">
+      <p>Tasks: <span>{numberOfTasks}</span></p>
       <div className="filter-task_wrapper">
-      <p>All</p>
-      <p>Active</p>
-      <p>Doned</p>
+        <button onClick={showAll}>All</button>
+        <button onClick={showDone}>Doned</button>
       </div>
-      <p className="clear-tasks">Clear all</p>
-      </div>
+      <button className="clear-tasks" onClick={clearTasks}>Clear all</button>
+    </footer>
   );
 };
 
