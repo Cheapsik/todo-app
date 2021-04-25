@@ -1,5 +1,5 @@
-import './Item.scss';
-import { MdDeleteForever as RemoveItem, MdDone as Done } from 'react-icons/md';
+import "./Item.scss";
+import { MdDeleteForever as RemoveItem, MdDone as Done } from "react-icons/md";
 
 const Item = ({ item, deleteTask, doneTask }) => {
   const handleDoneTask = () => {
@@ -11,21 +11,23 @@ const Item = ({ item, deleteTask, doneTask }) => {
   };
 
   return (
-    <li style={{ textDecoration: item.isDone ? 'line-through' : 'none' }}>
-      {item.value}
-      <div className='icon-container'>
-        <button
-          style={{ display: item.isDone ? 'none' : 'block' }}
-          onClick={handleDoneTask}
-        >
-          <Done />
-        </button>
-        <button onClick={handleDeleteTask}>
-          <RemoveItem />
-        </button>
-      </div>
-    </li>
+    item.displayItem && (
+      <li style={{ textDecoration: item.isDone ? "line-through" : "none" }}>
+        {item.value}
+        <div className="icon-container">
+          <button
+            style={{ display: item.isDone ? "none" : "block" }}
+            onClick={handleDoneTask}
+          >
+            <Done />
+          </button>
+          <button onClick={handleDeleteTask}>
+            <RemoveItem />
+          </button>
+        </div>
+      </li>
+    )
   );
 };
 
-export default (Item);
+export default Item;

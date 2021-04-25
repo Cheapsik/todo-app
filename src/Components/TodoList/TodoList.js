@@ -1,18 +1,18 @@
-import React from 'react';
-import generateId from 'uniqid';
-import './TodoList.scss';
-import AppHeader from '../AppHeader';
-import ItemList from '../ItemList';
-import Footer from '../Footer'
+import React from "react";
+import generateId from "uniqid";
+import "./TodoList.scss";
+import AppHeader from "../AppHeader";
+import ItemList from "../ItemList";
+import Footer from "../Footer";
 class TodoList extends React.Component {
   state = {
-    value: '',
+    value: "",
     list: [],
   };
 
   //Input
 
-  handleinputOnChange = e => {
+  handleinputOnChange = (e) => {
     this.setState({
       value: e.target.value.trimLeft(),
     });
@@ -21,33 +21,34 @@ class TodoList extends React.Component {
   //Tasks
 
   handleAddTask = () => {
-    const { value, list } = this.state;
+    const { value, list, showOnlyDone } = this.state;
     const taskList = [...list];
     const insertedItem = {
       value: value.charAt(0).toUpperCase() + value.slice(1),
       id: generateId(),
       isDone: false,
+      displayItem: showOnlyDone ? false : true,
     };
 
     taskList.push(insertedItem);
     this.setState({
       list: taskList,
-      value: '',
+      value: "",
     });
   };
 
-  handleDoneTask = id => {
+  handleDoneTask = (id) => {
     const { list } = this.state;
-    const updatedList = list.map(listItem => {
+    const updatedList = list.map((listItem) => {
       const isSearchedListItem = listItem.id === id;
-      
+
       return isSearchedListItem
         ? {
             ...listItem,
             isDone: true,
+            displayItem: true,
           }
         : listItem;
-        
     });
 
     this.setState({
@@ -55,40 +56,55 @@ class TodoList extends React.Component {
     });
   };
 
-  handleDeleteTask = id => {
-    const listFiltered = this.state.list.filter(listItem => listItem.id !== id);
+  handleDeleteTask = (id) => {
+    const listFiltered = this.state.list.filter(
+      (listItem) => listItem.id !== id,
+    );
     this.setState({
       list: listFiltered,
     });
   };
 
-
   //Footer
 
   handleShowAll = () => {
-    const list = [...this.state.list];
+    const { list } = this.state;
+    const updatedList = list.map((listItem) => ({
+      ...listItem,
+      displayItem: true,
+    }));
+
     this.setState({
-      list,
-    })
-  }
+      list: updatedList,
+    });
+  };
 
   handleShowDone = () => {
-    const dataStore = JSON.parse(localStorage.getItem('dataStore'));
-  }
-  
+    const { list } = this.state;
+    const updatedList = list.map((listItem) => ({
+      ...listItem,
+      displayItem: listItem.isDone,
+    }));
+
+    this.setState({
+      list: updatedList,
+      showOnlyDone: true,
+    });
+  };
+
   handleClearTasks = () => {
     this.setState({
-      value: '',
+      value: "",
       list: [],
-    })
-  }
+    });
+  };
 
   componentDidUpdate() {
-    localStorage.setItem('dataStore', JSON.stringify(this.state.list));
+    localStorage.setItem("dataStore", JSON.stringify(this.state.list));
   }
 
   componentDidMount() {
-    const dataStore = JSON.parse(localStorage.getItem('dataStore'));
+    const dataStore = JSON.parse(localStorage.getItem("dataStore"));
     if (dataStore !== null) {
       this.setState({
         list: dataStore,
@@ -96,13 +112,9 @@ class TodoList extends React.Component {
     }
   }
 
-
-
-
-
   render() {
     return (
-      <div className='todo-wrapper'>
+      <div className="todo-wrapper">
         <AppHeader
           inputValue={this.state.value}
           inputOnChange={this.handleinputOnChange}
@@ -113,11 +125,11 @@ class TodoList extends React.Component {
           deleteTask={this.handleDeleteTask}
           doneTask={this.handleDoneTask}
         />
-        <Footer 
+        <Footer
           showAll={this.handleShowAll}
           showDone={this.handleShowDone}
           clearTasks={this.handleClearTasks}
-          numberOfTasks={this.state.list.length}
+          taskList={this.state.list}
         />
       </div>
     );
