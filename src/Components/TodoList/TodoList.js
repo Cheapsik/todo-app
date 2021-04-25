@@ -10,11 +10,15 @@ class TodoList extends React.Component {
     list: [],
   };
 
+  //Input
+
   handleinputOnChange = e => {
     this.setState({
       value: e.target.value.trimLeft(),
     });
   };
+
+  //Tasks
 
   handleAddTask = () => {
     const { value, list } = this.state;
@@ -36,12 +40,14 @@ class TodoList extends React.Component {
     const { list } = this.state;
     const updatedList = list.map(listItem => {
       const isSearchedListItem = listItem.id === id;
+      
       return isSearchedListItem
         ? {
             ...listItem,
             isDone: true,
           }
         : listItem;
+        
     });
 
     this.setState({
@@ -56,6 +62,27 @@ class TodoList extends React.Component {
     });
   };
 
+
+  //Footer
+
+  handleShowAll = () => {
+    const list = [...this.state.list];
+    this.setState({
+      list,
+    })
+  }
+
+  handleShowDone = () => {
+    const dataStore = JSON.parse(localStorage.getItem('dataStore'));
+  }
+  
+  handleClearTasks = () => {
+    this.setState({
+      value: '',
+      list: [],
+    })
+  }
+
   componentDidUpdate() {
     localStorage.setItem('dataStore', JSON.stringify(this.state.list));
   }
@@ -68,6 +95,10 @@ class TodoList extends React.Component {
       });
     }
   }
+
+
+
+
 
   render() {
     return (
@@ -82,7 +113,12 @@ class TodoList extends React.Component {
           deleteTask={this.handleDeleteTask}
           doneTask={this.handleDoneTask}
         />
-        <Footer />
+        <Footer 
+          showAll={this.handleShowAll}
+          showDone={this.handleShowDone}
+          clearTasks={this.handleClearTasks}
+          numberOfTasks={this.state.list.length}
+        />
       </div>
     );
   }
