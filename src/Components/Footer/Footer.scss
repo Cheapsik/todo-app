@@ -1,9 +1,5 @@
 .footer {
     width: 100%;
-    height: 70px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -26,21 +22,25 @@ button {
     color: rgb(50, 50, 50);
     font-size: 14px;
     cursor: pointer;
+    transition: .2s ease-in-out;
+
     &:hover {
         color: indigo;
         text-shadow: 0px 0px 20px magenta;
     }
-    
 }
 
 @media (max-width: 800px),
 (max-height: 750px) {
-    span, button{
-        font-size: clamp(.725rem, 2.5vw, 1rem); 
+
+    span,
+    button {
+        font-size: clamp(0.725rem, 2.5vw, 1rem);
     }
 }
-p{
-    span{
+
+p {
+    span {
         color: indigo;
     }
 }
