@@ -3,7 +3,6 @@ Todo App List 📋
 </h1>
 
 ![Project-visited](https://enwg29n4ih11m71.m.pipedream.net/)
-[![Live](https://img.shields.io/badge/Live:-TodoApp-green.svg)](https://lfijal-todo.netlify.app/)
 
 ## General info
 This project is simple Todo App List. The tasks you add are saved in the browser's cache, so nothing will happen if you accidentally refresh the page. Enjoy it! 
